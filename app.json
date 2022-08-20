@@ -1,7 +1,7 @@
 {
   "name": "King Tag Bot",
   "logo":"https://telegra.ph/file/0062aa0776f52bc476b2f.jpg",
-  "description": "King TAG BOT ÜCRETSİZ ŞEKILDE QRUPUNUZDA USERLƏRİ  EDƏ BIləR.",
+  "description": "King TAG BOT ÜCRETSİZ ŞEKILDE QRUPUNUZDA USERLƏRİ TAG EDƏ BIləR.",
   "env": {
     "TOKEN": {
       "description": "@botfather Vasitesi ile Ala Bilersen(Gerekli)",
