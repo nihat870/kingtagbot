@@ -29,7 +29,7 @@ async def start(event):
                    
 		      [Button.url('Məni Qrupa Qat ➕', 'https://t.me/kingtagbot?startgroup=a')],
                       [Button.url('Yardım Qrupu 🛠', 'https://t.me/king_sohbet_33')],
-                      [Button.url('Resmi Kanal📣', 'https://t.me/gunesin_isigi_33')],
+                      [Button.url('Resmi Kanal📣', 'https://t.me/gunes_isigi_33')],
 		      [Button.url('Tərtibatçı👨🏻‍💻', 'https://t.me/nihat_33')],
                     ),
                     link_preview=False
@@ -41,7 +41,7 @@ async def help(event):
                     buttons=(
                       [Button.url(' Qrupa Qat➕', 'https://t.me/kingtagbot?startgroup=a')],
                       [Button.url('Yardim👨‍💻', 'https://t.me/king_sohbet_33')],
-                      [Button.url('Resmi Kanal🔖', 'https://t.me/gunesin_isigi_33')],
+                      [Button.url('Resmi Kanal🔖', 'https://t.me/gunes_isigi_33')],
 		      [Button.url('Tərtibatci🧑‍🔧', 'https://t.me/nihat_33')],
                     ),
                     link_preview=False
