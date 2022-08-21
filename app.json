@@ -5,15 +5,15 @@
   "env": {
     "TOKEN": {
       "description": "@botfather Vasitesi ile Ala Bilersen(Gerekli)",
-      "value": "5711585813:AAHYc6SKQvZfB7wsuguWXX3ltuXOvefa0VY"
+      "value": ""
     },
     "APP_ID": {
       "description": " my.telegram.org vasitesi ile ala bilersen (Gerekli)",
-      "value": "8885124"
+      "value": ""
     },
     "API_HASH": {
       "description": "my.telegram.org Vasitesi ile ala bilersen (Gerekli)",
-      "value": "3671cb624cb9d3fa70d9e76f909abb82"
+      "value": ""
     }
   },
   "buildpacks": [{
