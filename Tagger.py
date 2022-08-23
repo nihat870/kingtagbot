@@ -36,7 +36,7 @@ async def start(event):
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**🎉 KingtagBot əmrlər**\n\n**/tag <səbəb> - 5-li tağ edər**\n\n**/etag <səbəb> - smaliklər ilə tağ edər**\n\n**/tektag səbəb - Userləri tək tək tağ edər**\n\n**/atag səbəb - adminləri Tək tək Tağ Edər**\n\n**/start - botu başladır**"
+helptext = "**🎉 King Tağ Bot Əmrlər**\n\n**/tag <səbəb> - 5-li tağ edər**\n\n**/etag <səbəb> - smaliklər ilə tağ edər**\n\n**/tektag <səbəb> - Userləri tək tək tağ edər**\n\n**/atag <səbəb> - adminləri Tək tək Tağ Edər**\n\n**/soztag <səbəb> - sözlər ilə tağ edir userləri**\n\n**/futbol <səbəb> - futbolçu adları ilə tağ edir**\n\n**/adtag <səbəb> - adlar ilə tağ eder **\n\n**/start - botu başladır**"
   await event.reply(helptext,
                     buttons=(
                       [Button.url(' Qrupa Qat➕', 'https://t.me/kingtagbot?startgroup=a')],
@@ -49,7 +49,7 @@ async def help(event):
 	
 @client.on(events.NewMessage(pattern="^/reklam"))
 async def help(event):
-  helptext = "**Çox özəllikli Tağ Botu Çalışan Qrup Sahibleri @kingtagBot Size Görə:\n\n📌 5-li tağ\n📌 smalik ilə tağ\n📌 təkli tağ\n📌 Yalnız adminləri tağ\n📌\n\n Böyle Çok özellikli @kingtagBot 'una Qrubunuzda adminlik verərək rahatlıqla , tağ edə bilərsiz **"
+  helptext = "**Çox özəllikli Tağ Botu Çalışan Qrup Sahibleri @kingtagBot Size Görə:\n\n📌 5-li tağ\n📌 smalik ilə tağ\n📌 təkli tağ\n📌 futbolçu adları ilə tağ\n📌adlar ile tağ\n📌sözlər ilə tağ\n📌 Yalnız adminləri tağ\n📌\n\n Böyle Çok özellikli @kingtagBot 'una Qrubunuzda adminlik verərək rahatlıqla , tağ edə bilərsiz **"
   await event.reply(helptext,
                     buttons=(
                       [Button.url('Botu Qrupa qat➕', 'https://t.me/kingtagbot?startgroup=a')],
@@ -517,6 +517,74 @@ async def mentionall(event):
 @client.on(events.NewMessage(pattern='^(?i)/cancel'))
 async def cancel(event):
   global anlik_calisan
+  anlik_calisan.remove(event.chat_id)
+  
+  ad = ['Üzümlü kek ✨', 'Nar çiçeği ✨', 'Papatya 🌼', 'Karanfil ✨', 'Gül 🌹', 'Ayıcık 🐻', 'Mutlu panda 🐼', 'Ay pare 🌛', 'Ballı lokma ✨', 'Lale 🌷', 'Ahtapot 🐙', 'Zambak ⚜', 'Akasya 🌿', 'Akşam Sefası 🌛', 'Begonvil 🥀', 'Begonya 🪴', 'Bambu 🎍', 'Fesleğen 🌿', 'Kasımpatı 🌸', 'Manolya 🌾', 'Boncuk 🧿', 'Badem 🥭', 'Minnoş 🐹', 'Ponçik 🐣', 'Pofuduk 🐼', 'Unicorn 🦄', 'Karamel 🍫', 'Fındık 🌰', 'Fıstık 🥜', 'Pamuk ☁️', 'Minnoş 🥰', 'Zeytin 🫒', 'Afrodit 🧚🏻', 'Nergis ✨', 'Sümbül ☘️', 'Nilüfer ☘️', 'Menekşe ⚜️', 'Lavanta ✨', 'Gül pare 🌺', 'Reyhan 🌷', 'Kaktüs 🌵', 'Buket 💐', 'Başak 🌾', 'Kar Tanesi ❄️', 'Tospik 🐢', 'Kelebek 🦋', 'Tavşan 🐰', 'Şeker 🍬', 'Böğürtlen ☘️', 'Orkide ☘️', 'Manolya ✨', 'Ayçiçeği 🌻', 'Tweety 🐥', 'Star ✨', 'Yonca 🍀', 'Ateş böceği ✨']
+  
+  @client.on(events.NewMessage(pattern="^/adtag ?(.*)")) 
+ 
+async def mentionall(event): 
+  global anlik_calisan 
+  if event.is_private: 
+    return await event.respond("Bu əmr qruplar və kanallar üçün etibarlıdır❗") 
+   
+  admins = [] 
+  async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins): 
+    admins.append(admin.id) 
+  if not event.sender_id in admins: 
+    return await event.respond("Bu əmri sadəcə adminlər istifadə edə bilər 〽️") 
+   
+  if event.pattern_match.group(1): 
+    mode = "text_on_cmd" 
+    msg = event.pattern_match.group(1) 
+  elif event.reply_to_msg_id: 
+    mode = "text_on_reply" 
+    msg = event.reply_to_msg_id 
+    if msg == None: 
+        return await event.respond("Keçmiş mesajlar üçün necə tag edəcəyimi bilmirəm") 
+  elif event.pattern_match.group(1) and event.reply_to_msg_id: 
+    return await event.respond("Tağ etmək üçün səbəb yoxdu❗️") 
+  else: 
+    return await event.respond("Tağ etmək üçün səbəb yazın...!") 
+   
+  if mode == "text_on_cmd": 
+    anlik_calisan.append(event.chat_id) 
+    usrnum = 0 
+    usrtxt = "" 
+    async for usr in client.iter_participants(event.chat_id): 
+      usrnum += 1 
+      usrtxt += f"[{random.choice(ad)}](tg://user?id={usr.id}) " 
+      if event.chat_id not in anlik_calisan: 
+        await event.respond(" Tağ prosesi uğurla dayandırıldı❌") 
+        return 
+      if usrnum == 1: 
+        await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}") 
+        await asyncio.sleep(2) 
+        usrnum = 0 
+        usrtxt = "" 
+         
+   
+  if mode == "text_on_reply": 
+    anlik_calisan.append(event.chat_id) 
+  
+    usrnum = 0 
+    usrtxt = "" 
+    async for usr in client.iter_participants(event.chat_id): 
+      usrnum += 1 
+      usrtxt += f"[{random.choice(ad)}](tg://user?id={usr.id}) " 
+      if event.chat_id not in anlik_calisan: 
+        await event.respond("Proses Uğurla dayandırıldı\n\nBurda sizin reklamınız ola bilər @king_sohbet_33❌") 
+        return 
+      if usrnum == 1: 
+        await client.send_message(event.chat_id, usrtxt, reply_to=msg) 
+        await asyncio.sleep(2) 
+        usrnum = 0 
+        usrtxt = "" 
+ 
+ 
+@client.on(events.NewMessage(pattern='^(?i)/cancel')) 
+async def cancel(event): 
+  global anlik_calisan 
   anlik_calisan.remove(event.chat_id)
   
   
