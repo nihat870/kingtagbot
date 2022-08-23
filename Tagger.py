@@ -21,10 +21,9 @@ anlik_calisan = []
 tekli_calisan = []
 
 
-
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("**🎉KingtagBot**\n ile Qrupunuzda bütün userləri tag ede Bilərsiniz \nƏmrlər üçün =======> /help yazın**",
+  await event.reply("**🎉KingtagBot**\n Salam Mən sizin qrupunuzdaki userləri çağırmağınız üçün yaradılmış çox funksiyalı botam. \nƏmrlər üçün =======> /help yazın**",
                     buttons=(
                    
 		      [Button.url('Məni Qrupa Qat ➕', 'https://t.me/kingtagbot?startgroup=a')],
