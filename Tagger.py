@@ -21,9 +21,10 @@ anlik_calisan = []
 tekli_calisan = []
 
 
+
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("**🎉KingtagBot**\n Salam Mən sizin qrupunuzdaki userləri çağırmağınız üçün yaradılmış çox funksiyalı botam. \nƏmrlər üçün =======> /help yazın**",
+  await event.reply("**🎉KingtagBot**\n ile Qrupunuzda bütün userləri tag ede Bilərsiniz \nƏmrlər üçün =======> /help yazın👑**",
                     buttons=(
                    
 		      [Button.url('Məni Qrupa Qat ➕', 'https://t.me/kingtagbot?startgroup=a')],
@@ -35,7 +36,7 @@ async def start(event):
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-helptext = "**🎉 KingtagBot Əmrlər**\n\n**/tag <səbəb> - 5-li tağ edər**\n\n**/etag <səbəb> - smaliklər ilə tağ edər**\n\n**/tektag <səbəb> - Userləri tək tək tağ edər**\n\n**/atag <səbəb> - Adminləri Tək tək Tağ Edər**\n\n**/start - botu başladır**"
+helptext = "**🎉 King Tağ Bot Əmrlər **\n\n**/tag <səbəb> - 5-li tağ edər **\n\n**/etag <səbəb> - smaliklər ilə tağ edər **\n\n**/tektag <səbəb> - Userləri tək tək tağ edər **\n\n**/atag <səbəb> - adminləri Tək tək Tağ Edər **\n\n**/soztag <səbəb> - sözlər ilə tağ edir userləri **\n\n**/futbol <səbəb> - futbolçu adları ilə tağ edir** \n\n**/adtag <səbəb> - adlar ilə tağ eder **\n\n**/start - botu başladır**"
   await event.reply(helptext,
                     buttons=(
                       [Button.url(' Qrupa Qat➕', 'https://t.me/kingtagbot?startgroup=a')],
@@ -48,7 +49,7 @@ helptext = "**🎉 KingtagBot Əmrlər**\n\n**/tag <səbəb> - 5-li tağ edər**
 	
 @client.on(events.NewMessage(pattern="^/reklam"))
 async def help(event):
-  helptext = "**Çox özəllikli Tağ Botu Çalışan Qrup Sahibleri @kingtagBot Size Görə:\n\n📌 5-li tağ\n📌 smalik ilə tağ\n📌 təkli tağ\n📌 futbolçu adları ilə tağ\n📌adlar ile tağ\n📌sözlər ilə tağ\n📌 Yalnız adminləri tağ\n📌\n\n Böyle Çok özellikli @kingtagBot 'una Qrubunuzda adminlik verərək rahatlıqla , tağ edə bilərsiz **"
+  helptext = "**Çox özəllikli Tağ Botu Çalışan Qrup Sahibleri @kingtagBot Size Görə:\n\n📌 5-li tağ\n📌 smalik ilə tağ\n📌 təkli tağ\n📌 futbolçu adları ilə tağ\n📌adlar ilə tağ\n📌sözlər ilə \n📌 Yalnız adminləri tağ\n📌\n\n Böyle Çok özellikli @kingtagBot 'una Qrubunuzda adminlik verərək rahatlıqla , tağ edə bilərsiz **"
   await event.reply(helptext,
                     buttons=(
                       [Button.url('Botu Qrupa qat➕', 'https://t.me/kingtagbot?startgroup=a')],
