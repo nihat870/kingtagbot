@@ -334,17 +334,18 @@ soz = [
 
 
 @client.on(events.NewMessage(pattern="^/soztag ?(.*)"))
+
 async def mentionall(event):
+
   global anlik_calisan
-  rxyzdev_tagTot[event.chat_id] = 0
   if event.is_private:
-    return await event.respond("Bu əmri yalnız qruplarda və ya kanallarda istifadə edə bilərsiniz.")
+    return await event.respond("Bu əmr qruplar ve kanallar üçün etibarlıdır❗️**")
   
   admins = []
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("**Bu əmrdən yalnız adminlər istifadə edə bilər. 👑**")
+    return await event.respond("**Bu əmri sadəcə adminlər istifadə edə bilər〽️**")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -353,54 +354,50 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = event.reply_to_msg_id
     if msg == None:
-        return await event.respond("__Köhnə Yazılar üçün userləri qeyd edə bilmərəm!  (qrupa əlavə edilməzdən əvvəl göndərilən mesajlar)__")
+        return await event.respond("Əvvəlki Mesajlara Cavab Verməyin")
   elif event.pattern_match.group(1) and event.reply_to_msg_id:
-    return await event.respond("Mənə mətn verin.")
+    return await event.respond("Başlamaq üçün səbəb yoxdu❗️")
   else:
-    return await event.respond("**Başlamaq üçün səbəb yazın... 👑\n\n(Nümunə: /soztag Hamıya salam!)**")
+    return await event.respond("prosesə başlamaq üçün səbəb yoxdu")
   
   if mode == "text_on_cmd":
     anlik_calisan.append(event.chat_id)
     usrnum = 0
     usrtxt = ""
-    await event.respond("**✅ Tağ prosesi  başladı. 👑**")
-        
-    async for usr in client.iter_participants(event.chat_id, aggressive=False):
-      rxyzdev_tagTot[event.chat_id] += 1
+    async for usr in client.iter_participants(event.chat_id):
       usrnum += 1
-      usrtxt += f"[{random.choice(soz)}](tg://user?id={usr.id}) "
+      usrtxt += f"👥 - [{usr.first_name}](tg://user?id={usr.id}) \n"
       if event.chat_id not in anlik_calisan:
+        await event.respond("Proses Uğurla dayandırıldı\n\n**Burda sizin reklamımız ola bilir @king_sohbet_33**❌")
         return
-      if usrnum == 1:
-        await client.send_message(event.chat_id, f"**{msg}**\n{usrtxt}")
-        await asyncio.sleep(3)
+      if usrnum == 5:
+        await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
+        await asyncio.sleep(2)
         usrnum = 0
         usrtxt = ""
         
-    sender = await event.get_sender()
-    rxyzdev_initT = f"\n👑 - [{sender.first_name}](tg://user?id={sender.id})"
-    if event.chat_id in rxyzdev_tagTot:await event.respond(f"**✅ Tağ etmə prosesi uğurla tamamlandı.**\n\n**👥 Tağ edilən user sayı:** {rxyzdev_tagTot[event.chat_id]}\n**🗣 Tağ prosesini başladan şəxs:** {rxyzdev_initT}")
   
   if mode == "text_on_reply":
     anlik_calisan.append(event.chat_id)
  
     usrnum = 0
     usrtxt = ""
-    async for usr in client.iter_participants(event.chat_id, aggressive=False):
-      rxyzdev_tagTot[event.chat_id] += 1
+    async for usr in client.iter_participants(event.chat_id):
       usrnum += 1
-      usrtxt += f"[{random.choice(soz)}](tg://user?id={usr.id}) "
+      usrtxt += f"👥 - [{usr.first_name}](tg://user?id={usr.id}) \n"
       if event.chat_id not in anlik_calisan:
+        await event.respond("proses Uğurla dayandırıldı❌")
         return
-      if usrnum == 1:
+      if usrnum == 5:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
-        await asyncio.sleep(3)
+        await asyncio.sleep(2)
         usrnum = 0
         usrtxt = ""
-     
-    sender = await event.get_sender()
-    rxyzdev_initT = f"[{sender.first_name}](tg://user?id={sender.id})"      
-    if event.chat_id in rxyzdev_tagTot:await event.respond(f"**✅ Tağ prosesi uğurla tamamlandı.**\n\n**👥 Tağ edilən user sayı:** {rxyzdev_tagTot[event.chat_id]}\n**🗣 Tağ prosesini başladan şəxs:** {rxyzdev_initT}")
+
+@client.on(events.NewMessage(pattern='^(?i)/cancel'))
+async def cancel(event):
+  global anlik_calisan
+  anlik_calisan.remove(event.chat_id)
     
     
 print(">> Bot işlək vəziyyətdədir 🚀 @nihat_33 bilgi ala bilərsən <<")
