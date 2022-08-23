@@ -35,8 +35,9 @@ async def start(event):
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
+
 async def help(event):
-helptext = "**🎉 King Tağ Bot Əmrlər **\n\n**/tag <səbəb> - 5-li tağ edər **\n\n**/etag <səbəb> - smaliklər ilə tağ edər **\n\n**/tektag <səbəb> - Userləri tək tək tağ edər **\n\n**/atag <səbəb> - adminləri Tək tək Tağ Edər **\n\n**/soztag <səbəb> - sözlər ilə tağ edir userləri **\n\n**/futbol <səbəb> - futbolçu adları ilə tağ edir** \n\n**/adtag <səbəb> - adlar ilə tağ eder **\n\n**/start - botu başladır**"
+helptext = "**Telegramdakı İnkişaf Etmiş User Tağ Botu İle Qrup Userlərini Rahatça Tag edə bilərsiniz. 👑**\n\n**/tag - Userləri 5'li Tağ edər. ✅**\n\n**/soztag - Gözəl Sözlərlə Tağ edər. ✅**\n\n**/adtag Fərqli Adlarda Tağ edər. ✅**\n\n**/futbol - Futbolcu Adları ile tağ edər. ✅**\n\n**/etag - Smaliklər İlə Tag edər. ✅**\n\n**/tektag - Userləri Tək Tək Tağ edər. ✅**\n\n**/atag - Adminləri Tağ edər . ✅**\n\n**/cancel - tağ etməyi dayandırır. ✅**"
   await event.reply(helptext,
                     buttons=(
                       [Button.url(' Qrupa Qat➕', 'https://t.me/kingtagbot?startgroup=a')],
