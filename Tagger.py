@@ -201,15 +201,15 @@ async def cancel(event):
 
 @client.on(events.NewMessage(pattern="^/tektag ?(.*)"))
 async def mentionall(event):
-  global tekli_calisan
+  global anlik_calisan
   if event.is_private:
-    return await event.respond("**Bu əmr qruplar ve kanallar üçün Etibarlıdır❗️**")
+    return await event.respond("Bu əmr qruplar ve kanallar üçün etibarlıdır❗️**")
   
   admins = []
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("**Bu əmri sadəcə adminlər istifadə edə bilər〽**")
+    return await event.respond("**Bu əmri sadəcə adminlər istifadə edə bilər👑**")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -218,39 +218,39 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = event.reply_to_msg_id
     if msg == None:
-        return await event.respond("**əvvəlki mesajı cavablaya bilmərəm*")
+        return await event.respond("Əvvəlki Mesajlara Cavab Verməyin")
   elif event.pattern_match.group(1) and event.reply_to_msg_id:
-    return await event.respond("Başlamaq üçün Səbəb Yazın❗️")
+    return await event.respond("Başlamaq üçün səbəb yoxdu❗️")
   else:
-    return await event.respond("**Prosesə başlamağım üçün səbəb yazın..**")
+    return await event.respond("prosesə başlamaq üçün səbəb yoxdu")
   
   if mode == "text_on_cmd":
-    tekli_calisan.append(event.chat_id)
+    anlik_calisan.append(event.chat_id)
     usrnum = 0
     usrtxt = ""
     async for usr in client.iter_participants(event.chat_id):
       usrnum += 1
-      usrtxt += f"**👤 - [{usr.first_name}](tg://user?id={usr.id}) \n**"
-      if event.chat_id not in tekli_calisan:
-        await event.respond("**Proses Uğurla Dayandırıldı\n\n**Burda sızın reklamınız ola bilər @king_sohbet_33**❌****")
+      usrtxt += f"👥 - [{usr.first_name}](tg://user?id={usr.id}) \n"
+      if event.chat_id not in anlik_calisan:
+        await event.respond("Proses Uğurla dayandırıldı\n\n**Burda sizin reklamımız ola bilir @king_sohbet_33**❌")
         return
-      if usrnum == 1:
-        await client.send_message(event.chat_id, f"{usrtxt} {msg}")
+      if usrnum == 5:
+        await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
         await asyncio.sleep(2)
         usrnum = 0
         usrtxt = ""
         
   
   if mode == "text_on_reply":
-    tekli_calisan.append(event.chat_id)
+    anlik_calisan.append(event.chat_id)
  
     usrnum = 0
     usrtxt = ""
     async for usr in client.iter_participants(event.chat_id):
       usrnum += 1
-      usrtxt += f"👤 - [{usr.first_name}](tg://user?id={usr.id}) \n"
-      if event.chat_id not in tekli_calisan:
-        await event.respond("Proses Uğurla Dayandırıldı\n\n**Burda sizin reklamınız ola bilər @king_sohbet_33**❌**")
+      usrtxt += f"👥 - [{usr.first_name}](tg://user?id={usr.id}) \n"
+      if event.chat_id not in anlik_calisan:
+        await event.respond("proses Uğurla dayandırıldı❌")
         return
       if usrnum == 1:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
@@ -260,8 +260,8 @@ async def mentionall(event):
 
 @client.on(events.NewMessage(pattern='^(?i)/cancel'))
 async def cancel(event):
-  global tekli_calisan
-  tekli_calisan.remove(event.chat_id)
+  global anlik_calisan
+  anlik_calisan.remove(event.chat_id))
 	
 
 
