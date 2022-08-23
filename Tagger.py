@@ -338,14 +338,15 @@ soz = [
 async def mentionall(event):
 
   global anlik_calisan
+  rxyzdev_tagTot[event.chat_id] = 0
   if event.is_private:
-    return await event.respond("Bu əmr qruplar ve kanallar üçün etibarlıdır❗️**")
+    return await event.respond("Bu əmri yalnız qruplarda və ya kanallarda istifadə edə bilərsiniz.")
   
   admins = []
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("**Bu əmri sadəcə adminlər istifadə edə bilər〽️**")
+    return await event.respond("**Bu əmrdən yalnız adminlər istifadə edə bilər. 👑**")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -354,7 +355,7 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = event.reply_to_msg_id
     if msg == None:
-        return await event.respond("Əvvəlki Mesajlara Cavab Verməyin")
+        return await event.respond("__Köhnə Yazılar üçün userləri qeyd edə bilmərəm!  (qrupa əlavə edilməzdən əvvəl göndərilən mesajlar)__")
   elif event.pattern_match.group(1) and event.reply_to_msg_id:
     return await event.respond("Başlamaq üçün səbəb yoxdu❗️")
   else:
