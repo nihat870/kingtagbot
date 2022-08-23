@@ -35,7 +35,7 @@ async def start(event):
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-helptext = "**🎉 KingtagBot Əmrlər**\n\n**/tag <səbəb> - 5-li tağ edər**\n\n**/etag <səbəb> - smaliklər ilə tağ edər**\n\n**/tektag <səbəb> - Userləri tək tək tağ edər**\n\n**/soztag <səbəb> - sözlər ilə tağ edir userləri**\n\n**/futbol <səbəb> - futbolçu adları ilə tağ edir**\n\n**/adtag <səbəb> - adlar ilə tağ eder**\n\n**/start - botu başladır**"
+helptext = "**🎉 KingtagBot Əmrlər**\n**/tag <səbəb> - 5-li tağ edər**\n**/etag <səbəb> - smaliklər ilə tağ edər**\n**/tektag <səbəb> - Userləri tək tək tağ edər**\n**/atag <səbəb> - adminləri Tək tək Tağ Edər**\n**/soztag <səbəb> - sözlər ilə tağ edir userləri**\n**/futbol <səbəb> - futbolçu adları ilə tağ edir**\n**/adtag <səbəb> - adlar ilə tağ eder**\n**/start - botu başladır**"
   await event.reply(helptext,
                     buttons=(
                       [Button.url(' Qrupa Qat➕', 'https://t.me/kingtagbot?startgroup=a')],
